@@ -19,7 +19,6 @@
       <body name="spine_1" pos="0.05 0 0.03">
         <joint name="spine_1_pitch" axis="0 1 0" range="-15 20"/>
         <geom name="spine_1_geom" fromto="0 0 0 0.12 0 0.02" size="0.02"/>
-        <geom name="sternum_keel" fromto="0.04 0 -0.08 0.08 0 -0.2" size="0.012"/>
 
         <body name="spine_2" pos="0.12 0 0.02">
           <joint name="spine_2_pitch" axis="0 1 0" range="-10 15"/>
