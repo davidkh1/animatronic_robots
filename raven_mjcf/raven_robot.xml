@@ -1,0 +1,164 @@
+<mujoco model="raven_robot">
+  <compiler angle="degree" coordinate="local"/>
+  <option timestep="0.002" gravity="0 0 -9.81"/>
+
+  <default>
+    <geom type="capsule" size="0.015" rgba="0.9 0.9 0.95 1" density="700"/>
+    <joint type="hinge" limited="true" damping="1"/>
+  </default>
+
+  <worldbody>
+    <body name="raven" pos="0 0 0.35">
+      <geom name="pelvis_geom" fromto="-0.05 0 0 0.05 0 0" size="0.03"/>
+
+      <body name="tail" pos="-0.05 0 -0.01">
+        <joint name="tail_pitch" axis="0 1 0" range="-25 25"/>
+        <geom name="tail_geom" fromto="0 0 0 -0.2 0 -0.02" size="0.012"/>
+      </body>
+
+      <body name="spine_1" pos="0.05 0 0.03">
+        <joint name="spine_1_pitch" axis="0 1 0" range="-15 20"/>
+        <geom name="spine_1_geom" fromto="0 0 0 0.12 0 0.02" size="0.02"/>
+        <geom name="sternum_keel" fromto="0.04 0 -0.08 0.08 0 -0.2" size="0.012"/>
+
+        <body name="spine_2" pos="0.12 0 0.02">
+          <joint name="spine_2_pitch" axis="0 1 0" range="-10 15"/>
+          <geom name="spine_2_geom" fromto="0 0 0 0.1 0 0.02" size="0.018"/>
+
+          <body name="neck_1" pos="0.1 0 0.03">
+            <joint name="neck_1_pitch" axis="0 1 0" range="-35 35"/>
+            <geom name="neck_1_geom" fromto="0 0 0 0.05 0 0.05" size="0.013"/>
+
+            <body name="neck_2" pos="0.05 0 0.05">
+              <joint name="neck_2_pitch" axis="0 1 0" range="-35 35"/>
+              <geom name="neck_2_geom" fromto="0 0 0 0.05 0 0.06" size="0.012"/>
+
+              <body name="neck_3" pos="0.05 0 0.06">
+                <joint name="neck_3_pitch" axis="0 1 0" range="-35 35"/>
+                <geom name="neck_3_geom" fromto="0 0 0 0.05 0 0.06" size="0.011"/>
+
+                <body name="head" pos="0.05 0 0.06">
+                  <joint name="head_pitch" axis="0 1 0" range="-25 25"/>
+                  <geom name="head_geom" fromto="-0.02 0 0 0.06 0 0.02" size="0.02"/>
+                  <geom name="beak_geom" fromto="0.06 0 0.01 0.18 0 0.02" size="0.01"/>
+                </body>
+              </body>
+            </body>
+          </body>
+
+          <body name="left_shoulder" pos="0.02 0.08 0.03">
+            <joint name="left_shoulder_pitch" axis="0 1 0" range="-60 60"/>
+            <geom name="left_humerus" fromto="0 0 0 0.16 0.12 0.12" size="0.013"/>
+
+            <body name="left_forearm" pos="0.16 0.12 0.12">
+              <joint name="left_elbow_pitch" axis="0 1 0" range="-90 20"/>
+              <geom name="left_radius_ulna" fromto="0 0 0 0.2 0.16 0.08" size="0.012"/>
+
+              <body name="left_carpus" pos="0.2 0.16 0.08">
+                <joint name="left_carpus_pitch" axis="0 1 0" range="-45 30"/>
+                <geom name="left_carpometacarpus" fromto="0 0 0 0.18 0.14 0.04" size="0.01"/>
+
+                <body name="left_digits" pos="0.18 0.14 0.04">
+                  <joint name="left_digits_pitch" axis="0 1 0" range="-30 30"/>
+                  <geom name="left_digits_geom" fromto="0 0 0 0.15 0.14 0.02" size="0.008"/>
+                </body>
+              </body>
+            </body>
+          </body>
+
+          <body name="right_shoulder" pos="0.02 -0.08 0.03">
+            <joint name="right_shoulder_pitch" axis="0 1 0" range="-60 60"/>
+            <geom name="right_humerus" fromto="0 0 0 0.16 -0.12 0.12" size="0.013"/>
+
+            <body name="right_forearm" pos="0.16 -0.12 0.12">
+              <joint name="right_elbow_pitch" axis="0 1 0" range="-90 20"/>
+              <geom name="right_radius_ulna" fromto="0 0 0 0.2 -0.16 0.08" size="0.012"/>
+
+              <body name="right_carpus" pos="0.2 -0.16 0.08">
+                <joint name="right_carpus_pitch" axis="0 1 0" range="-45 30"/>
+                <geom name="right_carpometacarpus" fromto="0 0 0 0.18 -0.14 0.04" size="0.01"/>
+
+                <body name="right_digits" pos="0.18 -0.14 0.04">
+                  <joint name="right_digits_pitch" axis="0 1 0" range="-30 30"/>
+                  <geom name="right_digits_geom" fromto="0 0 0 0.15 -0.14 0.02" size="0.008"/>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+
+      <body name="left_leg" pos="-0.02 0.05 -0.03">
+        <joint name="left_hip_pitch" axis="0 1 0" range="-45 45"/>
+        <geom name="left_femur" fromto="0 0 0 0.05 0.02 -0.12" size="0.012"/>
+
+        <body name="left_tibiotarsus" pos="0.05 0.02 -0.12">
+          <joint name="left_knee_pitch" axis="0 1 0" range="-90 30"/>
+          <geom name="left_tibiotarsus_geom" fromto="0 0 0 0.07 0.02 -0.18" size="0.01"/>
+
+          <body name="left_tarsometatarsus" pos="0.07 0.02 -0.18">
+            <joint name="left_ankle_pitch" axis="0 1 0" range="-45 45"/>
+            <geom name="left_tarsometatarsus_geom" fromto="0 0 0 0.06 0.02 -0.1" size="0.009"/>
+
+            <body name="left_toes" pos="0.06 0.02 -0.1">
+              <joint name="left_toes_pitch" axis="0 1 0" range="-30 30"/>
+              <geom name="left_toe_front" fromto="0 0 0 0.08 0.06 -0.02" size="0.006"/>
+              <geom name="left_toe_rear" fromto="0 0 0 -0.04 0 -0.02" size="0.005"/>
+            </body>
+          </body>
+        </body>
+      </body>
+
+      <body name="right_leg" pos="-0.02 -0.05 -0.03">
+        <joint name="right_hip_pitch" axis="0 1 0" range="-45 45"/>
+        <geom name="right_femur" fromto="0 0 0 0.05 -0.02 -0.12" size="0.012"/>
+
+        <body name="right_tibiotarsus" pos="0.05 -0.02 -0.12">
+          <joint name="right_knee_pitch" axis="0 1 0" range="-90 30"/>
+          <geom name="right_tibiotarsus_geom" fromto="0 0 0 0.07 -0.02 -0.18" size="0.01"/>
+
+          <body name="right_tarsometatarsus" pos="0.07 -0.02 -0.18">
+            <joint name="right_ankle_pitch" axis="0 1 0" range="-45 45"/>
+            <geom name="right_tarsometatarsus_geom" fromto="0 0 0 0.06 -0.02 -0.1" size="0.009"/>
+
+            <body name="right_toes" pos="0.06 -0.02 -0.1">
+              <joint name="right_toes_pitch" axis="0 1 0" range="-30 30"/>
+              <geom name="right_toe_front" fromto="0 0 0 0.08 -0.06 -0.02" size="0.006"/>
+              <geom name="right_toe_rear" fromto="0 0 0 -0.04 0 -0.02" size="0.005"/>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+
+  <actuator>
+    <position name="tail_pitch_act" joint="tail_pitch" kp="10"/>
+    <position name="spine_1_pitch_act" joint="spine_1_pitch" kp="15"/>
+    <position name="spine_2_pitch_act" joint="spine_2_pitch" kp="15"/>
+    <position name="neck_1_pitch_act" joint="neck_1_pitch" kp="20"/>
+    <position name="neck_2_pitch_act" joint="neck_2_pitch" kp="20"/>
+    <position name="neck_3_pitch_act" joint="neck_3_pitch" kp="20"/>
+    <position name="head_pitch_act" joint="head_pitch" kp="20"/>
+
+    <position name="left_shoulder_act" joint="left_shoulder_pitch" kp="30"/>
+    <position name="left_elbow_act" joint="left_elbow_pitch" kp="25"/>
+    <position name="left_carpus_act" joint="left_carpus_pitch" kp="20"/>
+    <position name="left_digits_act" joint="left_digits_pitch" kp="15"/>
+
+    <position name="right_shoulder_act" joint="right_shoulder_pitch" kp="30"/>
+    <position name="right_elbow_act" joint="right_elbow_pitch" kp="25"/>
+    <position name="right_carpus_act" joint="right_carpus_pitch" kp="20"/>
+    <position name="right_digits_act" joint="right_digits_pitch" kp="15"/>
+
+    <position name="left_hip_act" joint="left_hip_pitch" kp="25"/>
+    <position name="left_knee_act" joint="left_knee_pitch" kp="20"/>
+    <position name="left_ankle_act" joint="left_ankle_pitch" kp="15"/>
+    <position name="left_toes_act" joint="left_toes_pitch" kp="10"/>
+
+    <position name="right_hip_act" joint="right_hip_pitch" kp="25"/>
+    <position name="right_knee_act" joint="right_knee_pitch" kp="20"/>
+    <position name="right_ankle_act" joint="right_ankle_pitch" kp="15"/>
+    <position name="right_toes_act" joint="right_toes_pitch" kp="10"/>
+  </actuator>
+</mujoco>

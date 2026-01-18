@@ -1,0 +1,25 @@
+<mujoco model="raven_scene">
+  <include file="raven_robot.xml"/>
+
+  <visual>
+    <global offwidth="3840" offheight="2160" azimuth="90" elevation="-10"/>
+    <quality shadowsize="4096" offsamples="16"/>
+    <headlight ambient="0.4 0.4 0.4" diffuse="0.8 0.8 0.8" specular="0.1 0.1 0.1"/>
+    <map stiffness="1e+04" stiffnessrot="5e+04" force="2e-05"/>
+    <scale jointwidth="0.01" framewidth="0.01"/>
+  </visual>
+
+  <statistic meansize="0.1" extent="1.2" center="0 0 0.4"/>
+
+  <asset>
+    <texture name="grid" type="2d" builtin="checker" rgb1=".1 .2 .3" rgb2=".2 .3 .4" width="300" height="300"
+      mark="edge" markrgb=".2 .3 .4"/>
+    <material name="grid" texture="grid" texrepeat="1 1" texuniform="true" reflectance=".2"/>
+    <texture name="skybox" type="skybox" builtin="gradient" rgb1=".4 .6 .8" rgb2="0 0 0" width="100" height="100"/>
+  </asset>
+
+  <worldbody>
+    <geom name="floor" type="plane" size="5 5 .1" material="grid" pos="0 0 0" solref="0.0002 1"/>
+    <camera name="side_reference" pos="0 -1.6 0.55" xyaxes="1 0 0 0 0 1"/>
+  </worldbody>
+</mujoco>
